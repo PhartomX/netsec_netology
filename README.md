@@ -47,6 +47,10 @@ sudo tail -f /var/log/suricata/fast.log
 ![img7](https://github.com/PhartomX/netsec_netology/blob/main/img/img7.png)
 ![img8](https://github.com/PhartomX/netsec_netology/blob/main/img/img8.png)
 
+Как мы видим, кроме случая отправки пакета с флагом ACK, Suricata отображает и классифицирует трафик в логах.
+
+Suricata не генерирует оповещения на единичные ACK-пакеты, потому что это базовая, легитимная часть работы протокола TCP. С точки зрения сетевой логики, ACK-пакет — это просто подтверждение уже полученных данных.
+
 
 ### Задание 2.
            
