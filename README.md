@@ -52,9 +52,30 @@ sudo tail -f /var/log/suricata/fast.log
 
 Suricata не генерирует оповещения на единичные ACK-пакеты, потому что это базовая, легитимная часть работы протокола TCP. С точки зрения сетевой логики, ACK-пакет — это просто подтверждение уже полученных данных.
 
+---
 
 ### Задание 2.
            
 Проведите атаку на подбор пароля для службы SSH:
 
 hydra -L users.txt -P pass.txt < ip-адрес > ssh
+---
+
+Запускаем подбор с отключеным Fail2Ban и проверяем логи Suricata:
+
+![img9](https://github.com/PhartomX/netsec_netology/blob/main/img/img9.png)
+![img10](https://github.com/PhartomX/netsec_netology/blob/main/img/img10.png)
+
+Видим в логах Suricata отбражение и классификацию трафика.
+Для эксперимента добавил имя и пароль существующего пользователя.
+
+Теперь включаем Fail2Ban и проверяем его работу:
+![img11](https://github.com/PhartomX/netsec_netology/blob/main/img/img11.png)
+![img12](https://github.com/PhartomX/netsec_netology/blob/main/img/img12.png)
+
+Видим, что подбор завершился ошибкой, а в логах Fail2Ban есть заблокированный адрес - 10.0.2.15.
+![img13](https://github.com/PhartomX/netsec_netology/blob/main/img/img13.png)
+
+Повторный подбор пароля теперь сразу выдаст ошибку:
+
+![img14](https://github.com/PhartomX/netsec_netology/blob/main/img/img14.png)
